@@ -17,7 +17,6 @@ struct ItemDataInput: DataModel{
     var currentLocation:[String]?
 }
 class ItemListViewControllerServiceManger {
-    let jsonDecoder = JSONDecoder()
     weak var delegate: ItemListViewControllerServiceMangerDelegate?
     
     func getItemListData(){
