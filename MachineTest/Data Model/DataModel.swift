@@ -8,14 +8,17 @@
 
 import Foundation
 protocol DataModel: Codable{
-    static func getDataModel(_ jsonData: Data) -> DataModel?
+    associatedtype T
+    static func getDataModel(_ jsonData: Data) -> T?
     func getJsonData() -> Data?
 }
 extension DataModel{
-    static func getDataModel(_ jsonData: Data) -> DataModel?{
+    static func getDataModel(_ jsonData: Data) -> T?{
         let jsonDecoder = JSONDecoder()
         if let apiResponse = try? jsonDecoder.decode(self, from: jsonData){
-            return apiResponse
+            if let apiData = apiResponse as? Self.T{
+                return apiData
+            }
         }
         return nil
     }

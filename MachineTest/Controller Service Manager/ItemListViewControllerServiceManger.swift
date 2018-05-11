@@ -12,6 +12,7 @@ protocol ItemListViewControllerServiceMangerDelegate : class{
     func itemListViewControllerServiceMangerDelegate(serviceManger: ItemListViewControllerServiceManger, didFetchingData data: [ItemDataModel]?)
 }
 struct ItemDataInput: DataModel{
+    typealias T = ItemDataInput
     var languageId:String?
     var currentLocation:[String]?
 }
@@ -29,10 +30,8 @@ class ItemListViewControllerServiceManger {
                 Helper.showAlert(title: "Error", subtitle: "Unable To Parse Data")
                 return
             }
-            if let apiData = apiResponse as? APIResponseClient<[ItemDataModel]>{
-                if apiData.validate(){
-                    self.delegate?.itemListViewControllerServiceMangerDelegate(serviceManger: self, didFetchingData: apiData.data)
-                }
+            if apiResponse.validate(){
+                self.delegate?.itemListViewControllerServiceMangerDelegate(serviceManger: self, didFetchingData: apiResponse.data)
             }
         }
     }

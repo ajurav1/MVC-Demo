@@ -7,10 +7,11 @@
 //
 
 import Foundation
-struct APIResponseClient<T: Codable>: DataModel{
+struct APIResponseClient<T1: Codable>: DataModel{
+    typealias T = APIResponseClient<T1>
     var statusCode: Int?
     var message: String?
-    var data: T?
+    var data: T1?
     
     func validate() -> Bool {
         if self.statusCode != 200{
