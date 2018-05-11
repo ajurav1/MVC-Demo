@@ -8,7 +8,7 @@
 
 import Foundation
 struct BusinessDataModel: DataModel {
-    typealias T = BusinessDataModel
+    typealias mineType = BusinessDataModel
     var _id: String?
     var name: String?
     var branch: String?
@@ -20,6 +20,6 @@ struct BusinessDataModel: DataModel {
     var business_address:[BusinessAddressDataModel]?
 }
 struct BusinessAddressDataModel: DataModel {
-    typealias T = BusinessAddressDataModel
+    typealias mineType = BusinessAddressDataModel
     var city: String?
 }

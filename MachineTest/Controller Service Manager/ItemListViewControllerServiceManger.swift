@@ -12,7 +12,7 @@ protocol ItemListViewControllerServiceMangerDelegate : class{
     func itemListViewControllerServiceMangerDelegate(serviceManger: ItemListViewControllerServiceManger, didFetchingData data: [ItemDataModel]?)
 }
 struct ItemDataInput: DataModel{
-    typealias T = ItemDataInput
+    typealias mineType = ItemDataInput
     var languageId:String?
     var currentLocation:[String]?
 }
