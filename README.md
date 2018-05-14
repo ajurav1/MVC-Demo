@@ -1,3 +1,3 @@
 # MVC-Demo
 
-Perfect use of generics within protocols by typealias
+Perfect use of generics within protocols by associatedtype

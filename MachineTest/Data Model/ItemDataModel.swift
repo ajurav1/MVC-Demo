@@ -8,7 +8,7 @@
 
 import Foundation
 struct ItemDataModel: DataModel {
-    typealias mineType = ItemDataModel
+    typealias dataModel = ItemDataModel
     var _id: String?
     var pic: ImageDataModel?
     var categoryName: String?

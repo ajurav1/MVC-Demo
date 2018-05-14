@@ -8,7 +8,7 @@
 
 import Foundation
 struct APIResponseClient<T: Codable>: DataModel{
-    typealias mineType = APIResponseClient<T>
+    typealias dataModel = APIResponseClient<T>
     var statusCode: Int?
     var message: String?
     var data: T?

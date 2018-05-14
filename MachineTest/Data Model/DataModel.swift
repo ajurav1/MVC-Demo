@@ -8,15 +8,15 @@
 
 import Foundation
 protocol DataModel: Codable{
-    associatedtype mineType
-    static func getDataModel(_ jsonData: Data) -> mineType?
+    associatedtype dataModel
+    static func getDataModel(_ jsonData: Data) -> dataModel?
     func getJsonData() -> Data?
 }
 extension DataModel{
-    static func getDataModel(_ jsonData: Data) -> mineType?{
+    static func getDataModel(_ jsonData: Data) -> dataModel?{
         let jsonDecoder = JSONDecoder()
         if let apiResponse = try? jsonDecoder.decode(self, from: jsonData){
-            if let apiData = apiResponse as? Self.mineType{
+            if let apiData = apiResponse as? Self.dataModel{
                 return apiData
             }
         }
