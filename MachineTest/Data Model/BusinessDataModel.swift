@@ -7,8 +7,7 @@
 //
 
 import Foundation
-struct BusinessDataModel: DataModel {
-    typealias dataModel = BusinessDataModel
+struct BusinessDataModel: Decodable {
     var _id: String?
     var name: String?
     var branch: String?
@@ -19,7 +18,6 @@ struct BusinessDataModel: DataModel {
     var isBookmark: Int?
     var business_address:[BusinessAddressDataModel]?
 }
-struct BusinessAddressDataModel: DataModel {
-    typealias dataModel = BusinessAddressDataModel
+struct BusinessAddressDataModel: Decodable {
     var city: String?
 }

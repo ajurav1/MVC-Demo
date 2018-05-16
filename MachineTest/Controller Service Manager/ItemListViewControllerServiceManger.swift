@@ -11,7 +11,7 @@ import Foundation
 protocol ItemListViewControllerServiceMangerDelegate : class{
     func itemListViewControllerServiceMangerDelegate(serviceManger: ItemListViewControllerServiceManger, didFetchingData data: [ItemDataModel]?)
 }
-struct ItemDataInput: DataModel{
+struct ItemDataInput: CodableModel{
     typealias dataModel = ItemDataInput
     var languageId:String?
     var currentLocation:[String]?
@@ -24,7 +24,7 @@ class ItemListViewControllerServiceManger {
         guard let inputData = itemDataInput.getJsonData() else {
             return
         }
-        NetworkUtility.shareInstance.callData(jsonInputData: inputData, path: "quickSearchCat") { (responseData) in
+        NetworkUtility.shareInstance.callData(requestType: .post, jsonInputData: inputData, path: "quickSearchCat") { (responseData) in
             guard let apiResponse = APIResponseClient<[ItemDataModel]>.getDataModel(responseData) else {
                 Helper.showAlert(title: "Error", subtitle: "Unable To Parse Data")
                 return

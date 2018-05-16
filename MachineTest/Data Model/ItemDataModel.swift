@@ -7,8 +7,7 @@
 //
 
 import Foundation
-struct ItemDataModel: DataModel {
-    typealias dataModel = ItemDataModel
+struct ItemDataModel: Decodable {
     var _id: String?
     var pic: ImageDataModel?
     var categoryName: String?

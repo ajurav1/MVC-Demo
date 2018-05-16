@@ -7,8 +7,7 @@
 //
 
 import Foundation
-struct ImageDataModel: DataModel {
-    typealias dataModel = ImageDataModel
+struct ImageDataModel: Decodable {
     var thumbnail: String?
     var original: String?
 }

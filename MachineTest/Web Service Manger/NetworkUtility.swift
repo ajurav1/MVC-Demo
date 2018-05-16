@@ -19,20 +19,25 @@ class NetworkUtility
     enum JSONError: String, Error{
         case NoData = "No data"
     }
+    enum ReqestType:String{
+        case post = "POST"
+        case get = "GET"
+    }
     
-    func callData(jsonInputData: Data, path:String, completion: @escaping (_ result: Data) -> Void){
+    func callData(requestType: ReqestType ,jsonInputData: Data?, path:String, completion: @escaping (_ result: Data) -> Void){
         if isInternetAvailable() {
             let urlPath = BaseUrl + path
-            
             guard let endpoint = NSURL(string: urlPath)
                 else {
-                    //print("Error creating endpoint")
+                    Helper.showAlert(title: "Error", subtitle:"Error creating endpoint")
                     return
             }
             var request = URLRequest(url:endpoint as URL)
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpMethod = "POST"
-            request.httpBody = jsonInputData
+            request.httpMethod = requestType.rawValue
+            if requestType == .post && jsonInputData != nil{
+                request.httpBody = jsonInputData!
+            }
             URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
                 do{
                     guard let data = data else{

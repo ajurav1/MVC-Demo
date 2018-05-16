@@ -7,15 +7,15 @@
 //
 
 import Foundation
-struct APIResponseClient<T: Codable>: DataModel{
+struct APIResponseClient<T: Codable>: CodableModel{
     typealias dataModel = APIResponseClient<T>
     var statusCode: Int?
     var message: String?
     var data: T?
     
     func validate() -> Bool {
-        if self.statusCode != 200{
-            Helper.showAlert(title: "Error", subtitle: self.message ?? "No meesage")
+        if self.statusCode != nil , self.statusCode != 200{
+            Helper.showAlert(title: "Error " + String(statusCode!), subtitle: self.message ?? "No meesage")
             return false
         }
         return true

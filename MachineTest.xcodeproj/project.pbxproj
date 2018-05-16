@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18879D3820A5878000DCA01C /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18879D3720A5877F00DCA01C /* DataModel.swift */; };
+		18879D3820A5878000DCA01C /* CodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18879D3720A5877F00DCA01C /* CodableModel.swift */; };
 		18AAC7A020A478A100F92EB4 /* ItemListView+collectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AAC79F20A478A000F92EB4 /* ItemListView+collectionView.swift */; };
 		18B1EA9E20A45D33009E175B /* APIResponseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1EA9D20A45D32009E175B /* APIResponseClient.swift */; };
 		24DA57672090C7E100D08D7C /* ItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DA57662090C7E100D08D7C /* ItemDataModel.swift */; };
@@ -51,7 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		18879D3720A5877F00DCA01C /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		18879D3720A5877F00DCA01C /* CodableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableModel.swift; sourceTree = "<group>"; };
 		18AAC79F20A478A000F92EB4 /* ItemListView+collectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ItemListView+collectionView.swift"; sourceTree = "<group>"; };
 		18B1EA9D20A45D32009E175B /* APIResponseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponseClient.swift; sourceTree = "<group>"; };
 		24DA57662090C7E100D08D7C /* ItemDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataModel.swift; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 		9809FA0F2090AF110016C4B3 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				18879D3720A5877F00DCA01C /* DataModel.swift */,
+				18879D3720A5877F00DCA01C /* CodableModel.swift */,
 				18B1EA9D20A45D32009E175B /* APIResponseClient.swift */,
 				24DA57662090C7E100D08D7C /* ItemDataModel.swift */,
 				24DA57682090D6B800D08D7C /* BusinessDataModel.swift */,
@@ -444,7 +444,7 @@
 				24DA576B2090D6B800D08D7C /* ImageDataModel.swift in Sources */,
 				24DA576A2090D6B800D08D7C /* BusinessDataModel.swift in Sources */,
 				24DA57702090E81B00D08D7C /* HeaderCell.swift in Sources */,
-				18879D3820A5878000DCA01C /* DataModel.swift in Sources */,
+				18879D3820A5878000DCA01C /* CodableModel.swift in Sources */,
 				98A2422C2090B7F6003EBA15 /* Utility.swift in Sources */,
 				9809F9E72090AE580016C4B3 /* MachineTest.xcdatamodeld in Sources */,
 				24DA57722090ED3F00D08D7C /* FooterCell.swift in Sources */,
