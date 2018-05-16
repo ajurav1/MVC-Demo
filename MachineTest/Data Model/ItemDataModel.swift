@@ -7,7 +7,7 @@
 //
 
 import Foundation
-struct ItemDataModel: Decodable {
+struct ItemDataModel: Codable {
     var _id: String?
     var pic: ImageDataModel?
     var categoryName: String?

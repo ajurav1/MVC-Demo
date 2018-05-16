@@ -7,7 +7,7 @@
 //
 
 import Foundation
-struct ImageDataModel: Decodable {
+struct ImageDataModel: Codable {
     var thumbnail: String?
     var original: String?
 }
