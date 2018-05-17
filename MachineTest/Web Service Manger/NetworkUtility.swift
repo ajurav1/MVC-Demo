@@ -13,6 +13,7 @@ class NetworkUtility
 {
     var BaseUrl:String = "http://54.213.242.191:8000/user/"
     
+    typealias resultData = (_ result: Data) -> ()
     static let shareInstance = NetworkUtility()
     private init(){}
     
@@ -24,7 +25,7 @@ class NetworkUtility
         case get = "GET"
     }
     
-    func callData(requestType: ReqestType ,jsonInputData: Data?, path:String, completion: @escaping (_ result: Data) -> Void){
+    func callData(requestType: ReqestType ,jsonInputData: Data?, path:String, completion: @escaping resultData){
         if isInternetAvailable() {
             let urlPath = BaseUrl + path
             guard let endpoint = NSURL(string: urlPath)
