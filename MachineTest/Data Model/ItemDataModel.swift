@@ -8,8 +8,17 @@
 
 import Foundation
 struct ItemDataModel: Codable {
-    var _id: String?
+    var userdID: String?
     var pic: ImageDataModel?
     var categoryName: String?
     var businessList: [BusinessDataModel]?
+    
+    enum CodingKeys: String, CodingKey
+    {
+        case userdID = "_id"
+        case pic
+        case categoryName
+        case businessList
+    }
 }
+

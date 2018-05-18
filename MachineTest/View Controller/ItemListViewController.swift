@@ -27,7 +27,7 @@ class ItemListViewController: UIViewController {
 
 }
 extension ItemListViewController: ItemListViewControllerServiceMangerDelegate{
-    func itemListViewControllerServiceMangerDelegate(serviceManger: ItemListViewControllerServiceManger, didFetchingData data: [ItemDataModel]?) {
+    func itemListViewControllerServiceMangerDelegate(serviceManger: ItemListViewControllerServiceManger, didFetchingData data: [ItemDataModel]?){
         if let itemArry = data{
             self.itemListView?.updateItemList(itemData: itemArry)
         }
