@@ -21,7 +21,6 @@
 		9809F9DF2090AE580016C4B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9809F9DE2090AE580016C4B3 /* AppDelegate.swift */; };
 		9809F9E12090AE580016C4B3 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9809F9E02090AE580016C4B3 /* ItemListViewController.swift */; };
 		9809F9E42090AE580016C4B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9809F9E22090AE580016C4B3 /* Main.storyboard */; };
-		9809F9E72090AE580016C4B3 /* MachineTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9809F9E52090AE580016C4B3 /* MachineTest.xcdatamodeld */; };
 		9809F9E92090AE580016C4B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9809F9E82090AE580016C4B3 /* Assets.xcassets */; };
 		9809F9EC2090AE580016C4B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9809F9EA2090AE580016C4B3 /* LaunchScreen.storyboard */; };
 		9809F9F72090AE590016C4B3 /* MachineTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9809F9F62090AE590016C4B3 /* MachineTestTests.swift */; };
@@ -66,7 +65,6 @@
 		9809F9DE2090AE580016C4B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9809F9E02090AE580016C4B3 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
 		9809F9E32090AE580016C4B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9809F9E62090AE580016C4B3 /* MachineTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MachineTest.xcdatamodel; sourceTree = "<group>"; };
 		9809F9E82090AE580016C4B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9809F9EB2090AE580016C4B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9809F9ED2090AE580016C4B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -111,6 +109,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1016F23720B2DACB006BBE8C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				98A2422B2090B7F6003EBA15 /* Utility.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		21642B33DC048D0D1AC78892 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,15 +164,15 @@
 			children = (
 				9809F9DE2090AE580016C4B3 /* AppDelegate.swift */,
 				98A242282090B4EE003EBA15 /* Web Service Manger */,
-				98A242252090B371003EBA15 /* Controller Service Manager */,
 				9809FA0F2090AF110016C4B3 /* Data Model */,
+				98A242252090B371003EBA15 /* Controller Service Manager */,
 				9809FA112090AF480016C4B3 /* View Controller */,
 				9809FA122090AF570016C4B3 /* View */,
 				9809F9E22090AE580016C4B3 /* Main.storyboard */,
+				1016F23720B2DACB006BBE8C /* Utils */,
 				9809F9E82090AE580016C4B3 /* Assets.xcassets */,
 				9809F9EA2090AE580016C4B3 /* LaunchScreen.storyboard */,
 				9809F9ED2090AE580016C4B3 /* Info.plist */,
-				9809F9E52090AE580016C4B3 /* MachineTest.xcdatamodeld */,
 			);
 			path = MachineTest;
 			sourceTree = "<group>";
@@ -231,7 +237,6 @@
 			isa = PBXGroup;
 			children = (
 				98A242292090B516003EBA15 /* NetworkUtility.swift */,
-				98A2422B2090B7F6003EBA15 /* Utility.swift */,
 			);
 			path = "Web Service Manger";
 			sourceTree = "<group>";
@@ -445,7 +450,6 @@
 				24DA576A2090D6B800D08D7C /* BusinessDataModel.swift in Sources */,
 				24DA57702090E81B00D08D7C /* HeaderCell.swift in Sources */,
 				98A2422C2090B7F6003EBA15 /* Utility.swift in Sources */,
-				9809F9E72090AE580016C4B3 /* MachineTest.xcdatamodeld in Sources */,
 				24DA57722090ED3F00D08D7C /* FooterCell.swift in Sources */,
 				18BE6C8F20ADB7F000E4F3C4 /* CodableModel.swift in Sources */,
 				18AAC7A020A478A100F92EB4 /* ItemListView+collectionView.swift in Sources */,
@@ -753,19 +757,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		9809F9E52090AE580016C4B3 /* MachineTest.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				9809F9E62090AE580016C4B3 /* MachineTest.xcdatamodel */,
-			);
-			currentVersion = 9809F9E62090AE580016C4B3 /* MachineTest.xcdatamodel */;
-			path = MachineTest.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 9809F9D32090AE570016C4B3 /* Project object */;
 }

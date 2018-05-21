@@ -15,7 +15,7 @@ struct APIResponseClient<T: Codable>: CodableModel{
     
     func validate() -> Bool {
         if self.statusCode != nil , self.statusCode != 200{
-            Helper.showAlert(title: "Error " + String(statusCode!), subtitle: self.message ?? "No meesage")
+            AppHelper.showAlert(title: "Error " + String(statusCode!), subtitle: self.message ?? "No meesage")
             return false
         }
         return true

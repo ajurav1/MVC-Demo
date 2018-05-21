@@ -30,7 +30,7 @@ class NetworkUtility
             let urlPath = BaseUrl + path
             guard let endpoint = NSURL(string: urlPath)
                 else {
-                    Helper.showAlert(title: "Error", subtitle:"Error creating endpoint")
+                    AppHelper.showAlert(title: "Error", subtitle:"Error creating endpoint")
                     return
             }
             var request = URLRequest(url:endpoint as URL)
@@ -47,16 +47,16 @@ class NetworkUtility
                     completion(data)
                 }
                 catch let error as JSONError{
-                    Helper.showAlert(title: "Error", subtitle: error.localizedDescription)
+                    AppHelper.showAlert(title: "Error", subtitle: error.localizedDescription)
                     return
                 }
                 catch let error as NSError {
-                    Helper.showAlert(title: "Error", subtitle: error.localizedDescription)
+                    AppHelper.showAlert(title: "Error", subtitle: error.localizedDescription)
                     return
                 }
                 }.resume()
         }else{
-            Helper.showAlert(title: "Error", subtitle: "Please check your internet connection")
+            AppHelper.showAlert(title: "Error", subtitle: "Please check your internet connection")
             return
         }
     }

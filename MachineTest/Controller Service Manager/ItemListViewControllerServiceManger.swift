@@ -26,7 +26,7 @@ class ItemListViewControllerServiceManger {
         }
         NetworkUtility.shareInstance.callData(requestType: .post, jsonInputData: inputData, path: "quickSearchCat") { (responseData) in
             guard let apiResponse = APIResponseClient<[ItemDataModel]>.getDataModel(responseData) else {
-                Helper.showAlert(title: "Error", subtitle: "Unable To Parse Data")
+                AppHelper.showAlert(title: "Error", subtitle: "Unable To Parse Data")
                 return
             }
             if apiResponse.validate(){
