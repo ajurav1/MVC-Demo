@@ -15,15 +15,14 @@ protocol CodableModel: Codable{
 extension CodableModel{
     static func getDataModel(_ jsonData: Data) -> dataModel?{
         let jsonDecoder = JSONDecoder()
-        if let apiResponse = try? jsonDecoder.decode(self, from: jsonData){
-            if let apiData = apiResponse as? Self.dataModel{
-                return apiData
-            }
-        }else{
-            if let jsonDict = try? JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as! NSDictionary{
-                print(jsonDict) //To see unexpected json data
-            }
+        if let apiResponse = try? jsonDecoder.decode(self, from: jsonData), let apiData = apiResponse as? Self.dataModel{
+            return apiData
         }
+        
+        if let jsonDict = try? JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as? NSDictionary{
+            print(jsonDict ?? "unable to parse json object") //To see unexpected json data
+        }
+        
         return nil
     }
     func getJsonData() -> Data? {
