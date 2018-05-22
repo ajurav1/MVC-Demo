@@ -17,10 +17,10 @@ class ItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ratingLabel: UILabel!
     
     func updateCell(_ dataModel:BusinessDataModel) {
-        if let imageString = dataModel.profilePic?.thumbnail{
-            if let imageUrl = URL(string: imageString){
-                itemImageView.kf.setImage(with: imageUrl, placeholder: #imageLiteral(resourceName: "placeholder"))
-            }
+        if let imageString = dataModel.profilePic?.thumbnail, let imageUrl = URL(string: imageString){
+            itemImageView.kf.setImage(with: imageUrl, placeholder: #imageLiteral(resourceName: "placeholder"))
+        }else{
+            itemImageView.image = #imageLiteral(resourceName: "placeholder")
         }
         if let titleText = dataModel.name{
             titleLabel.text = titleText
@@ -28,13 +28,8 @@ class ItemCollectionViewCell: UICollectionViewCell {
         if let ratingText = dataModel.ratings{
             ratingLabel.text = ratingText + "/5.0"
         }
-        if let businessAddress = dataModel.business_address{
-            if businessAddress.count > 0{
-                if let cityText = businessAddress.first?.city{
-                    subTitleLabel.text = cityText
-                }
-            }
+        if let businessAddress = dataModel.business_address, businessAddress.count > 0, let cityText = businessAddress.first?.city{
+            subTitleLabel.text = cityText
         }
-        
     }
 }

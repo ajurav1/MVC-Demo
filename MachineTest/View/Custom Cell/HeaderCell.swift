@@ -15,10 +15,8 @@ class HeaderCell: UICollectionReusableView {
     @IBOutlet weak var subTitleLabel: UILabel!
     
     func updateCell(_ dataModel:ItemDataModel) {
-        if let imageString = dataModel.pic?.thumbnail{
-            if let imageUrl = URL(string: imageString){
-                categoryImage.kf.setImage(with: imageUrl, placeholder: #imageLiteral(resourceName: "placeholder"))
-            }
+        if let imageString = dataModel.pic?.thumbnail, let imageUrl = URL(string: imageString){
+            categoryImage.kf.setImage(with: imageUrl, placeholder: #imageLiteral(resourceName: "placeholder"))
         }
         if let titleText = dataModel.categoryName{
             titleLabel.text = titleText
