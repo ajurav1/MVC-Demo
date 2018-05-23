@@ -8,15 +8,14 @@
 
 import Foundation
 protocol CodableModel: Codable{
-    associatedtype dataModel
-    static func getDataModel(_ jsonData: Data) -> dataModel?
+    static func getDataModel(_ jsonData: Data) -> Self?
     func getJsonData() -> Data?
 }
 extension CodableModel{
-    static func getDataModel(_ jsonData: Data) -> dataModel?{
+    static func getDataModel(_ jsonData: Data) -> Self?{
         let jsonDecoder = JSONDecoder()
-        if let apiResponse = try? jsonDecoder.decode(self, from: jsonData), let apiData = apiResponse as? Self.dataModel{
-            return apiData
+        if let apiResponse = try? jsonDecoder.decode(self, from: jsonData){
+            return apiResponse
         }
         
         if let jsonDict = try? JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as? NSDictionary{
