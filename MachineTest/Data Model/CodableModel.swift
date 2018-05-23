@@ -8,13 +8,14 @@
 
 import Foundation
 protocol CodableModel: Codable{
-    static func getDataModel(_ jsonData: Data) -> Self?
+    associatedtype dataType : Decodable
+    static func getDataModel(_ jsonData: Data) -> dataType?
     func getJsonData() -> Data?
 }
 extension CodableModel{
-    static func getDataModel(_ jsonData: Data) -> Self?{
+    static func getDataModel(_ jsonData: Data) -> dataType?{
         let jsonDecoder = JSONDecoder()
-        if let apiResponse = try? jsonDecoder.decode(self, from: jsonData){
+        if let apiResponse = try? jsonDecoder.decode(dataType.self, from: jsonData){
             return apiResponse
         }
         

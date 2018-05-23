@@ -12,6 +12,8 @@ protocol ItemListViewControllerServiceMangerDelegate : class{
     func itemListViewControllerServiceMangerDelegate(serviceManger: ItemListViewControllerServiceManger, didFetchingData data: [ItemDataModel]?)
 }
 struct ItemDataInput: CodableModel{
+    typealias dataType = ItemDataInput
+    
     var languageId:String?
     var currentLocation:[String]?
 }

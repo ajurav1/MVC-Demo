@@ -8,6 +8,8 @@
 
 import Foundation
 struct APIResponseClient<T: Codable>: CodableModel{
+    typealias dataType = APIResponseClient<T>
+    
     var statusCode: Int?
     var message: String?
     var data: T?
