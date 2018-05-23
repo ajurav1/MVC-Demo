@@ -23,15 +23,30 @@ class ItemListViewControllerServiceManger {
     func getItemListData(){
         let itemDataInput: ItemDataInput = ItemDataInput.init(languageId: "57db712ea202dc0eb1ee0f93", currentLocation: ["30","76"])
         guard let inputData = itemDataInput.getJsonData() else {
+            AppHelper.showAlert(title: "Error", subtitle: "Fail to prase input data")
             return
         }
-        NetworkUtility.shareInstance.callData(requestType: .post, jsonInputData: inputData, path: "quickSearchCat") { (responseData) in
-            guard let apiResponse = APIResponseClient<[ItemDataModel]>.getDataModel(responseData) else {
-                AppHelper.showAlert(title: "Error", subtitle: "Unable To Parse Data")
-                return
+        NetworkUtility.shareInstance.callData(requestType: .post, jsonInputData: inputData, path: "quickSearchCat") { (result) in
+            switch result{
+            case .success(let data):
+                self.didPraseData(data)
+                
+            case .fail(let error):
+                AppHelper.showAlert(error)
             }
-            if apiResponse.validate(){
-                self.delegate?.itemListViewControllerServiceMangerDelegate(serviceManger: self, didFetchingData: apiResponse.data)
+        }
+    }
+    
+    private func didPraseData(_ responseData: Data){
+        APIResponseClient<[ItemDataModel]>.getDataModel(responseData) { (result) in
+            switch result{
+            case .success(let apiResponse):
+                if apiResponse.validate(){
+                    self.delegate?.itemListViewControllerServiceMangerDelegate(serviceManger: self, didFetchingData: apiResponse.data)
+                }
+                
+            case .fail(let error):
+                AppHelper.showAlert(error)
             }
         }
     }

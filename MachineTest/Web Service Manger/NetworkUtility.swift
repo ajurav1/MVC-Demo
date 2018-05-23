@@ -13,7 +13,7 @@ class NetworkUtility
 {
     var BaseUrl:String = "http://54.213.242.191:8000/user/"
     
-    typealias resultData = (_ result: Data) -> ()
+    typealias resultData = (_ result: Result<Data, SAError>) -> ()
     static let shareInstance = NetworkUtility()
     private init(){}
     
@@ -28,10 +28,9 @@ class NetworkUtility
     func callData(requestType: ReqestType ,jsonInputData: Data?, path:String, completion: @escaping resultData){
         if isInternetAvailable() {
             let urlPath = BaseUrl + path
-            guard let endpoint = NSURL(string: urlPath)
-                else {
-                    AppHelper.showAlert(title: "Error", subtitle:"Error creating endpoint")
-                    return
+            guard let endpoint = NSURL(string: urlPath) else {
+                completion(Result.fail(SAError.init(WebServiceError.invalidUrl, code: 401, description: "Error creating endpoint")))
+                return
             }
             var request = URLRequest(url:endpoint as URL)
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -44,20 +43,14 @@ class NetworkUtility
                     guard let data = data else{
                         throw JSONError.NoData
                     }
-                    completion(data)
+                    completion(Result.success(data))
                 }
-                catch let error as JSONError{
-                    AppHelper.showAlert(title: "Error", subtitle: error.localizedDescription)
-                    return
-                }
-                catch let error as NSError {
-                    AppHelper.showAlert(title: "Error", subtitle: error.localizedDescription)
-                    return
+                catch {
+                    completion(Result.fail(SAError.init(error)))
                 }
                 }.resume()
         }else{
-            AppHelper.showAlert(title: "Error", subtitle: "Please check your internet connection")
-            return
+            completion(Result.fail(SAError.init(WebServiceError.networkNotReachable, code: 400, description: "Please check your internet connection")))
         }
     }
     private func isInternetAvailable() -> Bool{
