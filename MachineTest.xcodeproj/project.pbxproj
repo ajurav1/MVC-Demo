@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		1038695C20B67A6500A83A74 /* WebServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038695B20B67A6500A83A74 /* WebServiceClient.swift */; };
 		1038695E20B67BEB00A83A74 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038695D20B67BEB00A83A74 /* Constant.swift */; };
-		1056CA0A20B57A370052BB66 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1056CA0920B57A370052BB66 /* Result.swift */; };
+		1038697920B6BC3C00A83A74 /* APIResponseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038697220B6BC3C00A83A74 /* APIResponseClient.swift */; };
+		1038697A20B6BC3C00A83A74 /* CodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038697320B6BC3C00A83A74 /* CodableModel.swift */; };
+		1038697B20B6BC3C00A83A74 /* BusinessDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038697520B6BC3C00A83A74 /* BusinessDataModel.swift */; };
+		1038697C20B6BC3C00A83A74 /* ImageDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038697620B6BC3C00A83A74 /* ImageDataModel.swift */; };
+		1038697D20B6BC3C00A83A74 /* ItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038697720B6BC3C00A83A74 /* ItemDataModel.swift */; };
+		1038697E20B6BC3C00A83A74 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038697820B6BC3C00A83A74 /* Result.swift */; };
 		18AAC7A020A478A100F92EB4 /* ItemListView+collectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AAC79F20A478A000F92EB4 /* ItemListView+collectionView.swift */; };
-		18B1EA9E20A45D33009E175B /* APIResponseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B1EA9D20A45D32009E175B /* APIResponseClient.swift */; };
-		18BE6C8F20ADB7F000E4F3C4 /* CodableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BE6C8E20ADB7F000E4F3C4 /* CodableModel.swift */; };
-		24DA57672090C7E100D08D7C /* ItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DA57662090C7E100D08D7C /* ItemDataModel.swift */; };
-		24DA576A2090D6B800D08D7C /* BusinessDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DA57682090D6B800D08D7C /* BusinessDataModel.swift */; };
-		24DA576B2090D6B800D08D7C /* ImageDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DA57692090D6B800D08D7C /* ImageDataModel.swift */; };
 		24DA576E2090E59700D08D7C /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DA576D2090E59700D08D7C /* ItemCollectionViewCell.swift */; };
 		24DA57702090E81B00D08D7C /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DA576F2090E81B00D08D7C /* HeaderCell.swift */; };
 		24DA57722090ED3F00D08D7C /* FooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DA57712090ED3F00D08D7C /* FooterCell.swift */; };
@@ -55,13 +55,13 @@
 /* Begin PBXFileReference section */
 		1038695B20B67A6500A83A74 /* WebServiceClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceClient.swift; sourceTree = "<group>"; };
 		1038695D20B67BEB00A83A74 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		1056CA0920B57A370052BB66 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		1038697220B6BC3C00A83A74 /* APIResponseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponseClient.swift; sourceTree = "<group>"; };
+		1038697320B6BC3C00A83A74 /* CodableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableModel.swift; sourceTree = "<group>"; };
+		1038697520B6BC3C00A83A74 /* BusinessDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDataModel.swift; sourceTree = "<group>"; };
+		1038697620B6BC3C00A83A74 /* ImageDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDataModel.swift; sourceTree = "<group>"; };
+		1038697720B6BC3C00A83A74 /* ItemDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDataModel.swift; sourceTree = "<group>"; };
+		1038697820B6BC3C00A83A74 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		18AAC79F20A478A000F92EB4 /* ItemListView+collectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ItemListView+collectionView.swift"; sourceTree = "<group>"; };
-		18B1EA9D20A45D32009E175B /* APIResponseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponseClient.swift; sourceTree = "<group>"; };
-		18BE6C8E20ADB7F000E4F3C4 /* CodableModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableModel.swift; sourceTree = "<group>"; };
-		24DA57662090C7E100D08D7C /* ItemDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDataModel.swift; sourceTree = "<group>"; };
-		24DA57682090D6B800D08D7C /* BusinessDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDataModel.swift; sourceTree = "<group>"; };
-		24DA57692090D6B800D08D7C /* ImageDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDataModel.swift; sourceTree = "<group>"; };
 		24DA576D2090E59700D08D7C /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		24DA576F2090E81B00D08D7C /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
 		24DA57712090ED3F00D08D7C /* FooterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooterCell.swift; sourceTree = "<group>"; };
@@ -124,6 +124,27 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		1038697120B6BC3C00A83A74 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1038697820B6BC3C00A83A74 /* Result.swift */,
+				1038697320B6BC3C00A83A74 /* CodableModel.swift */,
+				1038697220B6BC3C00A83A74 /* APIResponseClient.swift */,
+				1038697420B6BC3C00A83A74 /* Data Model */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1038697420B6BC3C00A83A74 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				1038697520B6BC3C00A83A74 /* BusinessDataModel.swift */,
+				1038697620B6BC3C00A83A74 /* ImageDataModel.swift */,
+				1038697720B6BC3C00A83A74 /* ItemDataModel.swift */,
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
 		21642B33DC048D0D1AC78892 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,8 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				9809F9DE2090AE580016C4B3 /* AppDelegate.swift */,
-				9809FA0F2090AF110016C4B3 /* Data Model */,
-				98A242282090B4EE003EBA15 /* Web Service Client */,
+				98A242282090B4EE003EBA15 /* API Client */,
+				1038697120B6BC3C00A83A74 /* Model */,
 				98A242252090B371003EBA15 /* Controller Service Manager */,
 				9809FA112090AF480016C4B3 /* View Controller */,
 				9809FA122090AF570016C4B3 /* View */,
@@ -202,19 +223,6 @@
 			path = MachineTestUITests;
 			sourceTree = "<group>";
 		};
-		9809FA0F2090AF110016C4B3 /* Data Model */ = {
-			isa = PBXGroup;
-			children = (
-				1056CA0920B57A370052BB66 /* Result.swift */,
-				18BE6C8E20ADB7F000E4F3C4 /* CodableModel.swift */,
-				18B1EA9D20A45D32009E175B /* APIResponseClient.swift */,
-				24DA57662090C7E100D08D7C /* ItemDataModel.swift */,
-				24DA57682090D6B800D08D7C /* BusinessDataModel.swift */,
-				24DA57692090D6B800D08D7C /* ImageDataModel.swift */,
-			);
-			path = "Data Model";
-			sourceTree = "<group>";
-		};
 		9809FA112090AF480016C4B3 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,13 +249,13 @@
 			path = "Controller Service Manager";
 			sourceTree = "<group>";
 		};
-		98A242282090B4EE003EBA15 /* Web Service Client */ = {
+		98A242282090B4EE003EBA15 /* API Client */ = {
 			isa = PBXGroup;
 			children = (
 				98A242292090B516003EBA15 /* NetworkUtility.swift */,
 				1038695B20B67A6500A83A74 /* WebServiceClient.swift */,
 			);
-			path = "Web Service Client";
+			path = "API Client";
 			sourceTree = "<group>";
 		};
 		A3D52071712202554F0440EE /* Pods */ = {
@@ -453,22 +461,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24DA57672090C7E100D08D7C /* ItemDataModel.swift in Sources */,
+				1038697E20B6BC3C00A83A74 /* Result.swift in Sources */,
 				24DA576E2090E59700D08D7C /* ItemCollectionViewCell.swift in Sources */,
-				24DA576B2090D6B800D08D7C /* ImageDataModel.swift in Sources */,
-				24DA576A2090D6B800D08D7C /* BusinessDataModel.swift in Sources */,
 				24DA57702090E81B00D08D7C /* HeaderCell.swift in Sources */,
 				98A2422C2090B7F6003EBA15 /* Utility.swift in Sources */,
-				1056CA0A20B57A370052BB66 /* Result.swift in Sources */,
+				1038697D20B6BC3C00A83A74 /* ItemDataModel.swift in Sources */,
 				24DA57722090ED3F00D08D7C /* FooterCell.swift in Sources */,
 				1038695C20B67A6500A83A74 /* WebServiceClient.swift in Sources */,
-				18BE6C8F20ADB7F000E4F3C4 /* CodableModel.swift in Sources */,
 				18AAC7A020A478A100F92EB4 /* ItemListView+collectionView.swift in Sources */,
+				1038697A20B6BC3C00A83A74 /* CodableModel.swift in Sources */,
+				1038697B20B6BC3C00A83A74 /* BusinessDataModel.swift in Sources */,
 				1038695E20B67BEB00A83A74 /* Constant.swift in Sources */,
 				98A2422A2090B516003EBA15 /* NetworkUtility.swift in Sources */,
 				9809F9E12090AE580016C4B3 /* ItemListViewController.swift in Sources */,
-				18B1EA9E20A45D33009E175B /* APIResponseClient.swift in Sources */,
+				1038697920B6BC3C00A83A74 /* APIResponseClient.swift in Sources */,
 				98A242272090B3AC003EBA15 /* ItemListViewControllerServiceManger.swift in Sources */,
+				1038697C20B6BC3C00A83A74 /* ImageDataModel.swift in Sources */,
 				9809F9DF2090AE580016C4B3 /* AppDelegate.swift in Sources */,
 				9809FA162090B0070016C4B3 /* ItemListView.swift in Sources */,
 			);

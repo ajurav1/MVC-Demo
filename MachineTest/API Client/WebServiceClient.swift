@@ -8,6 +8,15 @@
 
 import Foundation
 
+enum WebServiceError: Error{
+    case dataModelParsingFailed
+    case invalidResponse
+    case resultValidationFailed
+    case networkNotReachable
+    case invalidUrl
+    case jsonParsingFailed
+}
+
 class WebServiceClient<dataModel:CodableModel> {
     typealias resultData = (_ result: Result<dataModel, SAError>) -> ()
     static func callData(requestType: ReqestType ,inputData: Data? = nil, path:String, completionHandler: @escaping resultData){

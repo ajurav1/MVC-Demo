@@ -28,11 +28,3 @@ class SAError {
         self.description = description
     }
 }
-enum WebServiceError: Error{
-    case dataModelParsingFailed
-    case invalidResponse
-    case resultValidationFailed
-    case networkNotReachable
-    case invalidUrl
-    case jsonParsingFailed
-}
