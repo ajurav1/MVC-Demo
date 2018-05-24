@@ -17,7 +17,11 @@ class WebServiceClient<dataModel:CodableModel> {
                 dataModel.getDataModel(data, completionHandler: { (result) in
                     switch result{
                     case .success(let response):
-                        completionHandler(Result.success(response as! dataModel))
+                        guard let responseModel = response as? dataModel else{
+                            completionHandler(Result.fail(SAError.init(WebServiceError.dataModelParsingFailed, code: 1001, description: "CodableModel Parsing Error")))
+                            return
+                        }
+                        completionHandler(Result.success(responseModel))
                     case .fail(let error):
                         completionHandler(Result.fail(error))
                     }

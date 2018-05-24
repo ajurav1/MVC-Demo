@@ -29,6 +29,7 @@ class SAError {
     }
 }
 enum WebServiceError: Error{
+    case dataModelParsingFailed
     case invalidResponse
     case resultValidationFailed
     case networkNotReachable
