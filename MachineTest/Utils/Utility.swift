@@ -35,10 +35,6 @@ class AppController<T:UIViewController>{
         return UIStoryboard(name: storyboardType.rawValue, bundle: nil).instantiateViewController(withIdentifier: identifier) as! T
     }
 }
-enum AppStoryboardType : String {
-    case main = "Main"
-    
-}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 extension UIView{

@@ -22,7 +22,7 @@ extension CodableModel{
                 if let jsonDict = try? JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as? NSDictionary{
                     print(jsonDict ?? "unable to parse json object") //To see unexpected json data
                 }
-                completionHandler(Result.fail(SAError.init(error)))
+                completionHandler(Result.fail(SAError.init(error, code: 1001, description: "CodableModel Parsing Error")))
             }
     }
     func getJsonData() -> Data? {
