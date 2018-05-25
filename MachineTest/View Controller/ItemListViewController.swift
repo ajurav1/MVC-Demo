@@ -10,13 +10,16 @@ import UIKit
 
 class ItemListViewController: UIViewController {
     private var itemListView : ItemListView?
-    private let serviceManger = ItemListViewControllerServiceManger()
+    
+    @IBOutlet var service: ItemListViewControllerServiceManger!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        serviceManger.delegate = self
         itemListView = self.view as? ItemListView
-        serviceManger.getItemListData()
+        service.delegate = self
+        
+        let itemData: ItemDataInput = ItemDataInput.init(languageId: "57db712ea202dc0eb1ee0f93", currentLocation: ["30","76"])
+        service.getItemListData(itemDataInput: itemData)
     }
 
     override func didReceiveMemoryWarning() {

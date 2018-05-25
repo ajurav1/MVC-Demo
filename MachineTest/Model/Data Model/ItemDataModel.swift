@@ -7,14 +7,19 @@
 //
 
 import Foundation
+
+struct ItemDataInput: Codable{
+    var languageId:String?
+    var currentLocation:[String]?
+}
+
 struct ItemDataModel: Codable {
     var userdID: String?
     var pic: ImageDataModel?
     var categoryName: String?
     var businessList: [BusinessDataModel]?
     
-    enum CodingKeys: String, CodingKey
-    {
+    enum CodingKeys: String, CodingKey {
         case userdID = "_id"
         case pic
         case categoryName

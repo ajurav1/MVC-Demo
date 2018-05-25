@@ -128,8 +128,12 @@
                             <outlet property="itemCollectionView" destination="4bR-qj-CcA" id="TZ6-vm-gdm"/>
                         </connections>
                     </view>
+                    <connections>
+                        <outlet property="service" destination="K1j-aj-sSc" id="nc6-cp-SCq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <customObject id="K1j-aj-sSc" customClass="ItemListViewControllerServiceManger" customModule="MachineTest" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="-79.200000000000003" y="98.50074962518741"/>
         </scene>

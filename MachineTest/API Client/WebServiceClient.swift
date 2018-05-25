@@ -8,7 +8,13 @@
 
 import Foundation
 
+enum ReqestType:String{
+    case post = "POST"
+    case get = "GET"
+}
+
 enum WebServiceError: Error{
+    case dataParsingFailed
     case dataModelParsingFailed
     case invalidResponse
     case resultValidationFailed
@@ -17,28 +23,48 @@ enum WebServiceError: Error{
     case jsonParsingFailed
 }
 
-class WebServiceClient<dataModel:CodableModel> {
-    typealias resultData = (_ result: Result<dataModel, SAError>) -> ()
-    static func callData(requestType: ReqestType ,inputData: Data? = nil, path:String, completionHandler: @escaping resultData){
-        NetworkUtility.shareInstance.callData(requestType: requestType, jsonInputData: inputData, path: "quickSearchCat") { (result) in
+extension Encodable{
+    func getData() -> Data? {
+        return try? JSONEncoder().encode(self)
+    }
+}
+
+class WebServiceClient<DataModel:Decodable> {
+    typealias ResultData = (_ result: Result<DataModel, SAError>) -> ()
+    
+    static func callData(withRequestType requestType: ReqestType ,_ inputDataModel: Encodable? = nil, path:String, completionHandler: @escaping ResultData){
+        var inputData: Data?
+        //encode model to data if needed
+        if let inputModel = inputDataModel{
+            guard let data = inputModel.getData() else{
+                completionHandler(Result.fail(SAError.init(WebServiceError.dataParsingFailed, code: 1001, description: "Data Parsing Error")))
+                return
+            }
+            inputData = data
+        }
+        
+        //call network API
+        NetworkUtility.shareInstance.callData(requestType: requestType, jsonInputData: inputData, subPath: path) { (result) in
             switch result{
             case .success(let data):
-                dataModel.getDataModel(data, completionHandler: { (result) in
-                    switch result{
-                    case .success(let response):
-                        guard let responseModel = response as? dataModel else{
-                            completionHandler(Result.fail(SAError.init(WebServiceError.dataModelParsingFailed, code: 1001, description: "CodableModel Parsing Error")))
-                            return
-                        }
-                        completionHandler(Result.success(responseModel))
-                    case .fail(let error):
-                        completionHandler(Result.fail(error))
-                    }
+                //decode data to model
+                self.getDataModel(fromData: data, completionHandler: { (result) in
+                    completionHandler(result)
                 })
-                
             case .fail(let error):
                 completionHandler(Result.fail(error))
             }
+        }
+    }
+    private static func getDataModel(fromData jsonData: Data, completionHandler: (Result<DataModel, SAError>)->()){
+        do {
+            let apiResponse = try JSONDecoder().decode(DataModel.self, from: jsonData)
+            completionHandler(Result.success(apiResponse))
+        } catch {
+            if let jsonDict = try? JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as? NSDictionary{
+                print(jsonDict ?? "unable to parse json object") //To see unexpected json data
+            }
+            completionHandler(Result.fail(SAError.init(error, code: 1001, description: "Data Model Parsing Error")))
         }
     }
 }

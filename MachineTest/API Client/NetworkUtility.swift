@@ -13,16 +13,16 @@ class NetworkUtility
 {
     var BaseUrl:String = "http://54.213.242.191:8000/user/"
     
-    typealias resultData = (_ result: Result<Data, SAError>) -> ()
+    typealias ResultData = (_ result: Result<Data, SAError>) -> ()
     static let shareInstance = NetworkUtility()
     private init(){}
     
     enum JSONError: String, Error{
         case NoData = "No data"
     }
-    func callData(requestType: ReqestType ,jsonInputData: Data?, path:String, completion: @escaping resultData){
+    func callData(requestType: ReqestType ,jsonInputData: Data?, subPath:String, completion: @escaping ResultData){
         if isInternetAvailable() {
-            let urlPath = BaseUrl + path
+            let urlPath = BaseUrl + subPath
             guard let endpoint = NSURL(string: urlPath) else {
                 completion(Result.fail(SAError.init(WebServiceError.invalidUrl, code: 401, description: "Error in creating endpoint")))
                 return

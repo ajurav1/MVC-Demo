@@ -7,12 +7,6 @@
 //
 
 import Foundation
-
-enum ReqestType:String{
-    case post = "POST"
-    case get = "GET"
-}
-
 enum AppStoryboardType : String {
     case main = "Main"
     
