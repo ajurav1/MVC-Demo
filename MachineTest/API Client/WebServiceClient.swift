@@ -32,7 +32,7 @@ extension Encodable{
 class WebServiceClient<DataModel:Decodable> {
     typealias ResultData = (_ result: Result<DataModel, SAError>) -> ()
     
-    static func callData(withRequestType requestType: ReqestType ,_ inputDataModel: Encodable? = nil, path:String, completionHandler: @escaping ResultData){
+    static func callData(ofRequestType requestType: ReqestType ,withInputModel inputDataModel: Encodable? = nil, atPath path:String, completionHandler: @escaping ResultData){
         var inputData: Data?
         //encode model to data if needed
         if let inputModel = inputDataModel{
