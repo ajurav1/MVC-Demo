@@ -56,7 +56,7 @@ class WebServiceClient<DataModel:Decodable> {
             }
         }
     }
-    private static func getDataModel(fromData jsonData: Data, completionHandler: (Result<DataModel, SAError>)->()){
+    private static func getDataModel(fromData jsonData: Data, completionHandler: ResultData){
         do {
             let apiResponse = try JSONDecoder().decode(DataModel.self, from: jsonData)
             completionHandler(Result.success(apiResponse))

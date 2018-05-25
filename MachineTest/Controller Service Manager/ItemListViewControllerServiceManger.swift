@@ -15,7 +15,7 @@ class ItemListViewControllerServiceManger: NSObject{
     weak var delegate: ItemListViewControllerServiceMangerDelegate?
     
     func getItemListData(itemDataInput: ItemDataInput){
-        WebServiceClient<APIResponseClient<[ItemDataModel]>>.callData(ofRequestType: ReqestType.get, withInputModel: itemDataInput, atPath: "quickSearchCat") { (result) in
+        WebServiceClient<APIResponseClient<[ItemDataModel]>>.callData(ofRequestType: ReqestType.post, withInputModel: itemDataInput, atPath: "quickSearchCat") { (result) in
             switch result{
             case .success(let apiResponse):
                 if apiResponse.validate(){
