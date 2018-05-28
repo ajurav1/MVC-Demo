@@ -23,12 +23,6 @@ enum WebServiceError: Error{
     case jsonParsingFailed
 }
 
-extension Encodable{
-    func getData() -> Data? {
-        return try? JSONEncoder().encode(self)
-    }
-}
-
 class WebServiceClient<DataModel:Decodable> {
     typealias ResultData = (_ result: Result<DataModel, SAError>) -> ()
     
@@ -48,7 +42,7 @@ class WebServiceClient<DataModel:Decodable> {
             switch result{
             case .success(let data):
                 //decode data to model
-                self.getDataModel(fromData: data, completionHandler: { (result) in
+                DataModel.getDataModel(fromData: data, completionHandler: { (result) in
                     completionHandler(result)
                 })
             case .fail(let error):
@@ -56,9 +50,18 @@ class WebServiceClient<DataModel:Decodable> {
             }
         }
     }
-    private static func getDataModel(fromData jsonData: Data, completionHandler: ResultData){
+}
+
+extension Encodable{
+    func getData() -> Data? {
+        return try? JSONEncoder().encode(self)
+    }
+}
+
+extension Decodable{
+    static func getDataModel(fromData jsonData: Data, completionHandler: (_ result: Result<Self, SAError>) -> ()){
         do {
-            let apiResponse = try JSONDecoder().decode(DataModel.self, from: jsonData)
+            let apiResponse = try JSONDecoder().decode(Self.self, from: jsonData)
             completionHandler(Result.success(apiResponse))
         } catch {
             if let jsonDict = try? JSONSerialization.jsonObject(with: jsonData, options: .allowFragments) as? NSDictionary{
