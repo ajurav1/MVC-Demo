@@ -7,7 +7,7 @@
 //
 
 import Foundation
-struct APIResponseClient<T: Codable>: Codable{
+struct APIResponseClient<T: Decodable>: Decodable{
     var statusCode: Int?
     var message: String?
     var data: T?

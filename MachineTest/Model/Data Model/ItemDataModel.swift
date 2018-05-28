@@ -8,12 +8,12 @@
 
 import Foundation
 
-struct ItemDataInput: Codable{
+struct ItemDataInput: Encodable{
     var languageId:String?
     var currentLocation:[String]?
 }
 
-struct ItemDataModel: Codable {
+struct ItemDataModel: Decodable {
     var userdID: String?
     var pic: ImageDataModel?
     var categoryName: String?

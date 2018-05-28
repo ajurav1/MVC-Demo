@@ -7,7 +7,7 @@
 //
 
 import Foundation
-struct BusinessDataModel: Codable {
+struct BusinessDataModel: Decodable {
     var _id: String?
     var name: String?
     var branch: String?
@@ -18,6 +18,6 @@ struct BusinessDataModel: Codable {
     var isBookmark: Int?
     var business_address:[BusinessAddressDataModel]?
 }
-struct BusinessAddressDataModel: Codable {
+struct BusinessAddressDataModel: Decodable {
     var city: String?
 }
