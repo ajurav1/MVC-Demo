@@ -1,3 +1,3 @@
 # MVC-Demo
 
-Perfect use of generics within protocols by associatedtype
+Perfect use of generics.
