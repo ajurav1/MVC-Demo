@@ -17,8 +17,8 @@ class ItemListView: UIView {
     }
     
     func updateItemList(itemData:[ItemDataModel]) {
-        itemArry = itemData.filter{$0.businessList?.count != 0}
-        DispatchQueue.main.sync {
+        itemArry = itemData.filter{$0.businessList != nil && $0.businessList?.count != 0}
+        DispatchQueue.main.async{
             self.itemCollectionView.reloadData()
         }
     }

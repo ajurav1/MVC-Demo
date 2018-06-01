@@ -7,14 +7,14 @@
 //
 
 import Foundation
-struct APIResponseClient<T: Decodable>: Decodable{
+struct APIResponseClient<T: Codable>: Codable{
     var statusCode: Int?
     var message: String?
     var data: T?
     
     func validate() -> Bool {
-        if self.statusCode != nil , self.statusCode != 200{
-            AppHelper.showAlert(title: "Validation Error " + String(statusCode!), subtitle: self.message ?? "No meesage")
+        if self.statusCode != 200{
+            AppHelper.showAlert(title: "Validation Error " + String(statusCode ?? 1001), subtitle: self.message ?? "No meesage")
             return false
         }
         return true

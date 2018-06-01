@@ -32,6 +32,9 @@
 		98A2422A2090B516003EBA15 /* NetworkUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A242292090B516003EBA15 /* NetworkUtility.swift */; };
 		98A2422C2090B7F6003EBA15 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2422B2090B7F6003EBA15 /* Utility.swift */; };
 		9CEF3A495C5EA2F94A328CDB /* Pods_MachineTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC47AA381125618118101D92 /* Pods_MachineTest.framework */; };
+		B7ABCC5020BFC6A100E22F9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7ABCC4F20BFC6A100E22F9F /* GoogleService-Info.plist */; };
+		B7ABCC5220BFCD6C00E22F9F /* FireBaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ABCC5120BFCD6C00E22F9F /* FireBaseClient.swift */; };
+		B7ABCC5420C0089C00E22F9F /* CodableUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ABCC5320C0089C00E22F9F /* CodableUtility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +85,9 @@
 		98A242262090B3AC003EBA15 /* ItemListViewControllerServiceManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewControllerServiceManger.swift; sourceTree = "<group>"; };
 		98A242292090B516003EBA15 /* NetworkUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtility.swift; sourceTree = "<group>"; };
 		98A2422B2090B7F6003EBA15 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		B7ABCC4F20BFC6A100E22F9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B7ABCC5120BFCD6C00E22F9F /* FireBaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireBaseClient.swift; sourceTree = "<group>"; };
+		B7ABCC5320C0089C00E22F9F /* CodableUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableUtility.swift; sourceTree = "<group>"; };
 		D3AE9F0C1BCF601237AFF1E8 /* Pods-MachineTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MachineTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MachineTest/Pods-MachineTest.debug.xcconfig"; sourceTree = "<group>"; };
 		E94E2DDFBE3C985EB07E6290 /* Pods-MachineTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MachineTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-MachineTest/Pods-MachineTest.release.xcconfig"; sourceTree = "<group>"; };
 		FC47AA381125618118101D92 /* Pods_MachineTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MachineTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,6 +204,7 @@
 				9809F9E82090AE580016C4B3 /* Assets.xcassets */,
 				9809F9EA2090AE580016C4B3 /* LaunchScreen.storyboard */,
 				9809F9ED2090AE580016C4B3 /* Info.plist */,
+				B7ABCC4F20BFC6A100E22F9F /* GoogleService-Info.plist */,
 			);
 			path = MachineTest;
 			sourceTree = "<group>";
@@ -250,7 +257,9 @@
 			isa = PBXGroup;
 			children = (
 				98A242292090B516003EBA15 /* NetworkUtility.swift */,
+				B7ABCC5320C0089C00E22F9F /* CodableUtility.swift */,
 				1038695B20B67A6500A83A74 /* WebServiceClient.swift */,
+				B7ABCC5120BFCD6C00E22F9F /* FireBaseClient.swift */,
 			);
 			path = "API Client";
 			sourceTree = "<group>";
@@ -276,7 +285,6 @@
 				9809F9D82090AE580016C4B3 /* Frameworks */,
 				9809F9D92090AE580016C4B3 /* Resources */,
 				AE1121AE0F268F01EDB8345E /* [CP] Embed Pods Frameworks */,
-				EC7FD9672CA99431B73EC95D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -380,6 +388,7 @@
 				24DA57762090ED7800D08D7C /* FooterCell.xib in Resources */,
 				9809F9E92090AE580016C4B3 /* Assets.xcassets in Resources */,
 				9809F9E42090AE580016C4B3 /* Main.storyboard in Resources */,
+				B7ABCC5020BFC6A100E22F9F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,11 +416,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MachineTest/Pods-MachineTest-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -436,21 +449,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EC7FD9672CA99431B73EC95D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MachineTest/Pods-MachineTest-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -461,12 +459,14 @@
 				1038697E20B6BC3C00A83A74 /* Result.swift in Sources */,
 				24DA576E2090E59700D08D7C /* ItemCollectionViewCell.swift in Sources */,
 				24DA57702090E81B00D08D7C /* HeaderCell.swift in Sources */,
+				B7ABCC5220BFCD6C00E22F9F /* FireBaseClient.swift in Sources */,
 				98A2422C2090B7F6003EBA15 /* Utility.swift in Sources */,
 				1038697D20B6BC3C00A83A74 /* ItemDataModel.swift in Sources */,
 				24DA57722090ED3F00D08D7C /* FooterCell.swift in Sources */,
 				1038695C20B67A6500A83A74 /* WebServiceClient.swift in Sources */,
 				18AAC7A020A478A100F92EB4 /* ItemListView+collectionView.swift in Sources */,
 				1038697B20B6BC3C00A83A74 /* BusinessDataModel.swift in Sources */,
+				B7ABCC5420C0089C00E22F9F /* CodableUtility.swift in Sources */,
 				1038695E20B67BEB00A83A74 /* Constant.swift in Sources */,
 				98A2422A2090B516003EBA15 /* NetworkUtility.swift in Sources */,
 				9809F9E12090AE580016C4B3 /* ItemListViewController.swift in Sources */,
@@ -644,7 +644,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MachineTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ios.av.1.MachineTest;
+				PRODUCT_BUNDLE_IDENTIFIER = ios.av.firebase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -659,7 +659,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MachineTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = ios.av.1.MachineTest;
+				PRODUCT_BUNDLE_IDENTIFIER = ios.av.firebase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

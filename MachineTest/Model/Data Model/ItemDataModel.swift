@@ -13,7 +13,7 @@ struct ItemDataInput: Encodable{
     var currentLocation:[String]?
 }
 
-struct ItemDataModel: Decodable {
+struct ItemDataModel: Codable {
     var userdID: String?
     var pic: ImageDataModel?
     var categoryName: String?

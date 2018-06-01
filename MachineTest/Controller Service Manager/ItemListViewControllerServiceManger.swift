@@ -15,12 +15,41 @@ class ItemListViewControllerServiceManger: NSObject{
     weak var delegate: ItemListViewControllerServiceMangerDelegate?
     
     func getItemListData(itemDataInput: ItemDataInput){
+        GetFireBaseClient<APIResponseClient<[ItemDataModel]>>.getData(for: .realtime, fromChild: "quickSearchCat") { (result) in
+            switch result{
+            case .success(let apiResponse):
+                if apiResponse.validate(){
+                    self.delegate?.itemListViewControllerServiceMangerDelegate(serviceManger: self, didFetchingData: apiResponse.data)
+                }else{
+                    self.callWebAPI(itemDataInput)
+                }
+            case .fail(let error):
+                AppHelper.showAlert(error)
+                self.callWebAPI(itemDataInput)
+            }
+        }
+    }
+    func deleteData(){
+        SetFireBaseClient.removeData(fromChild: "quickSearchCat") { (isError) in
+            AppHelper.showAlert(isError)
+        }
+    }
+    
+    fileprivate func setModelToFirebase(model: Encodable){
+        SetFireBaseClient.setData(withInputModel: model, atChild: "quickSearchCat") { (isError) in
+            AppHelper.showAlert(isError)
+        }
+    }
+    
+    fileprivate func callWebAPI(_ itemDataInput: ItemDataInput) {
         WebServiceClient<APIResponseClient<[ItemDataModel]>>.callData(ofRequestType: ReqestType.post, withInputModel: itemDataInput, atPath: "quickSearchCat") { (result) in
             switch result{
             case .success(let apiResponse):
                 if apiResponse.validate(){
                     self.delegate?.itemListViewControllerServiceMangerDelegate(serviceManger: self, didFetchingData: apiResponse.data)
                 }
+                self.setModelToFirebase(model: apiResponse)
+                
             case .fail(let error):
                 AppHelper.showAlert(error)
             }
