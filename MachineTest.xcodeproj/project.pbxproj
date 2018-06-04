@@ -32,6 +32,7 @@
 		98A2422A2090B516003EBA15 /* NetworkUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A242292090B516003EBA15 /* NetworkUtility.swift */; };
 		98A2422C2090B7F6003EBA15 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A2422B2090B7F6003EBA15 /* Utility.swift */; };
 		9CEF3A495C5EA2F94A328CDB /* Pods_MachineTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC47AA381125618118101D92 /* Pods_MachineTest.framework */; };
+		B74D8FEF20C542480014FD5A /* VideoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74D8FEE20C542480014FD5A /* VideoListViewController.swift */; };
 		B7ABCC5020BFC6A100E22F9F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7ABCC4F20BFC6A100E22F9F /* GoogleService-Info.plist */; };
 		B7ABCC5220BFCD6C00E22F9F /* FireBaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ABCC5120BFCD6C00E22F9F /* FireBaseClient.swift */; };
 		B7ABCC5420C0089C00E22F9F /* CodableUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ABCC5320C0089C00E22F9F /* CodableUtility.swift */; };
@@ -85,6 +86,7 @@
 		98A242262090B3AC003EBA15 /* ItemListViewControllerServiceManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewControllerServiceManger.swift; sourceTree = "<group>"; };
 		98A242292090B516003EBA15 /* NetworkUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtility.swift; sourceTree = "<group>"; };
 		98A2422B2090B7F6003EBA15 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		B74D8FEE20C542480014FD5A /* VideoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListViewController.swift; sourceTree = "<group>"; };
 		B7ABCC4F20BFC6A100E22F9F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B7ABCC5120BFCD6C00E22F9F /* FireBaseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireBaseClient.swift; sourceTree = "<group>"; };
 		B7ABCC5320C0089C00E22F9F /* CodableUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableUtility.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 		9809FA112090AF480016C4B3 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B74D8FEE20C542480014FD5A /* VideoListViewController.swift */,
 				9809F9E02090AE580016C4B3 /* ItemListViewController.swift */,
 			);
 			path = "View Controller";
@@ -458,6 +461,7 @@
 			files = (
 				1038697E20B6BC3C00A83A74 /* Result.swift in Sources */,
 				24DA576E2090E59700D08D7C /* ItemCollectionViewCell.swift in Sources */,
+				B74D8FEF20C542480014FD5A /* VideoListViewController.swift in Sources */,
 				24DA57702090E81B00D08D7C /* HeaderCell.swift in Sources */,
 				B7ABCC5220BFCD6C00E22F9F /* FireBaseClient.swift in Sources */,
 				98A2422C2090B7F6003EBA15 /* Utility.swift in Sources */,

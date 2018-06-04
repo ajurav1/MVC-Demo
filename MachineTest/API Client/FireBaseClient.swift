@@ -19,14 +19,7 @@ class SetFireBaseClient{
     typealias ErrorData = (_ error: SAError) -> ()
     static func setData(withInputModel inputDataModel: Encodable, atChild path: String, completionHandler: @escaping ErrorData){
         do{
-            var firebaseDataObject: Any?
-            let data = try inputDataModel.getData()
-            if inputDataModel is [Encodable]{
-                firebaseDataObject = try data.asArray()
-            }
-            else {
-                firebaseDataObject = try data.asDictionary()
-            }
+            let firebaseDataObject = try inputDataModel.getJsonObject()
             Database.database().reference().child(path).setValue(firebaseDataObject, withCompletionBlock: { (error:Error?, ref:DatabaseReference) in
                 if let error = error {
                     completionHandler(SAError.init(error))

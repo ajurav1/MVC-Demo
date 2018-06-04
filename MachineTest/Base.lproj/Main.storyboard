@@ -10,6 +10,57 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="wW3-1D-m9H">
+            <objects>
+                <navigationController id="kmb-fg-jaD" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="n6x-BD-Iel">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="RTH-E2-l1L" kind="relationship" relationship="rootViewController" id="68p-aN-kuF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zL4-JF-9Sv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-846" y="84"/>
+        </scene>
+        <!--Video list-->
+        <scene sceneID="5RB-ku-R6g">
+            <objects>
+                <viewController id="RTH-E2-l1L" customClass="VideoListViewController" customModule="MachineTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7va-M0-egh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pw3-dC-lTx">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="RTH-E2-l1L" id="Knq-6U-8ky"/>
+                                    <outlet property="delegate" destination="RTH-E2-l1L" id="Std-px-k9k"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Pw3-dC-lTx" firstAttribute="leading" secondItem="NsX-Hy-4qm" secondAttribute="leading" id="9Sa-OO-qNy"/>
+                            <constraint firstItem="Pw3-dC-lTx" firstAttribute="top" secondItem="NsX-Hy-4qm" secondAttribute="top" id="F7f-Ew-jIX"/>
+                            <constraint firstItem="NsX-Hy-4qm" firstAttribute="trailing" secondItem="Pw3-dC-lTx" secondAttribute="trailing" id="yOn-iL-IH3"/>
+                            <constraint firstItem="NsX-Hy-4qm" firstAttribute="bottom" secondItem="Pw3-dC-lTx" secondAttribute="bottom" id="zi3-px-dRv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NsX-Hy-4qm"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Video list" id="QXn-mX-Cej"/>
+                    <connections>
+                        <outlet property="tableData" destination="Pw3-dC-lTx" id="wld-qs-9vS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t8k-QO-PjX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-186" y="79"/>
+        </scene>
         <!--Item List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -135,7 +186,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <customObject id="K1j-aj-sSc" customClass="ItemListViewControllerServiceManger" customModule="MachineTest" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="-79.200000000000003" y="98.50074962518741"/>
+            <point key="canvasLocation" x="-1623" y="83"/>
         </scene>
     </scenes>
     <resources>

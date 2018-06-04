@@ -13,19 +13,8 @@ extension Encodable{
         return try JSONEncoder().encode(self)
     }
     
-}
-extension Data{
-    func asDictionary() throws -> [String: AnyObject] {
-        guard let dictionary = try JSONSerialization.jsonObject(with: self, options: .allowFragments) as? [String: AnyObject] else {
-            throw NSError()
-        }
-        return dictionary
-    }
-    func asArray() throws -> [[String: AnyObject]]{
-        guard let array = try JSONSerialization.jsonObject(with: self, options: .allowFragments) as? [[String: AnyObject]] else {
-            throw NSError()
-        }
-        return array
+    func getJsonObject() throws -> Any{
+        return try JSONSerialization.jsonObject(with: self.getData(), options: .allowFragments)
     }
 }
 
@@ -43,9 +32,10 @@ extension Decodable{
     }
     static func getDataModel(fromJsonObject object: Any, completionHandler: (_ result: Result<Self, SAError>) -> ()){
         do {
-            let jsonData = try JSONSerialization.data(withJSONObject: object, options: JSONSerialization.WritingOptions.prettyPrinted)
-            let responseModel = try JSONDecoder().decode(Self.self, from: jsonData)
-            completionHandler(Result.success(responseModel))
+            let data = try JSONSerialization.data(withJSONObject: object, options: JSONSerialization.WritingOptions.prettyPrinted)
+            self.getDataModel(fromData: data, completionHandler: { (result) in
+                 completionHandler(result)
+            })
         } catch {
             completionHandler(Result.fail(SAError.init(error)))
         }
