@@ -19,18 +19,7 @@ class VideoListViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        GetFireBaseClient<[String]>.getData(for: FirebaseObserveType.realtime, fromChild: "video") { (result) in
-            switch result{
-            case .success(let apiResponse):
-                self.itemArry.append(contentsOf: apiResponse)
-
-            case .fail(let error):
-                AppHelper.showAlert(error)
-            }
-        }
-        
+        super.viewDidLoad()        
     }
     
     override func didReceiveMemoryWarning() {

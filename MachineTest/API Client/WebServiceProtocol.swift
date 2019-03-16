@@ -23,10 +23,14 @@ enum WebServiceError: Error{
     case jsonParsingFailed
 }
 
-class WebServiceClient<DataModel:Decodable> {
+protocol WebServiceClient {
+    associatedtype DataModel:Decodable
     typealias ResultData = (_ result: Result<DataModel, SAError>) -> ()
     
-    static func callData(ofRequestType requestType: ReqestType ,withInputModel inputDataModel: Encodable? = nil, atPath path:String, completionHandler: @escaping ResultData){
+    func callData(ofRequestType requestType: ReqestType ,withInputModel inputDataModel: Encodable?, atPath path:String, completionHandler: @escaping ResultData)
+}
+extension WebServiceClient{
+    func callData(ofRequestType requestType: ReqestType ,withInputModel inputDataModel: Encodable? = nil, atPath path:String, completionHandler: @escaping ResultData){
         do{
             var inputData: Data?
             //encode model to data if needed
