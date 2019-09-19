@@ -11,12 +11,13 @@ import Foundation
 protocol ItemListViewControllerServiceMangerDelegate : class{
     func itemListViewControllerServiceMangerDelegate(serviceManger: ItemListViewControllerServiceManger, didFetchingData data: [ItemDataModel]?)
 }
-class ItemListViewControllerServiceManger: NSObject, GetFireBaseClient, SetFireBaseClient, WebServiceClient{
+
+class ItemListViewControllerServiceManger: NSObject, FireBaseClient, WebServiceClient{
     typealias DataModel = APIResponseClient<[ItemDataModel]>
     weak var delegate: ItemListViewControllerServiceMangerDelegate?
     
     func getItemListData(itemDataInput: ItemDataInput){
-        self.getData(for: .realtime, fromChild: "quickSearchCat") { (result) in
+        self.getFirebaseData(for: .realtime, fromChild: "quickSearchCat") { (result) in
             switch result{
             case .success(let apiResponse):
                 if apiResponse.validate(){
@@ -24,7 +25,7 @@ class ItemListViewControllerServiceManger: NSObject, GetFireBaseClient, SetFireB
                 }else{
                     self.callWebAPI(itemDataInput)
                 }
-            case .fail(let error):
+            case .failure(let error):
                 AppHelper.showAlert(error)
                 self.callWebAPI(itemDataInput)
             }
@@ -43,7 +44,7 @@ class ItemListViewControllerServiceManger: NSObject, GetFireBaseClient, SetFireB
     }
     
     fileprivate func callWebAPI(_ itemDataInput: ItemDataInput) {
-        self.callData(ofRequestType: ReqestType.post, withInputModel: itemDataInput, atPath: "quickSearchCat") { (result) in
+        self.callAPI(ofRequestType: .post, withInputModel: itemDataInput, atPath: .quickSearchCat) { (result) in
             switch result{
             case .success(let apiResponse):
                 if apiResponse.validate(){
@@ -51,7 +52,7 @@ class ItemListViewControllerServiceManger: NSObject, GetFireBaseClient, SetFireB
                 }
                 self.setModelToFirebase(model: apiResponse)
                 
-            case .fail(let error):
+            case .failure(let error):
                 AppHelper.showAlert(error)
             }
         }

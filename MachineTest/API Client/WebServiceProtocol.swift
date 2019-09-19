@@ -8,29 +8,14 @@
 
 import Foundation
 
-enum ReqestType:String{
-    case post = "POST"
-    case get = "GET"
-}
-
-enum WebServiceError: Error{
-    case dataParsingFailed
-    case dataModelParsingFailed
-    case invalidResponse
-    case resultValidationFailed
-    case networkNotReachable
-    case invalidUrl
-    case jsonParsingFailed
-}
-
 protocol WebServiceClient {
     associatedtype DataModel:Decodable
-    typealias ResultData = (_ result: Result<DataModel, SAError>) -> ()
+    typealias ResultData = (_ result: Result<DataModel, Error>) -> ()
     
-    func callData(ofRequestType requestType: ReqestType ,withInputModel inputDataModel: Encodable?, atPath path:String, completionHandler: @escaping ResultData)
+    func callAPI(ofRequestType requestType: ReqestType ,withInputModel inputDataModel: Encodable?, atPath path: ServerURLs, completionHandler: @escaping ResultData)
 }
 extension WebServiceClient{
-    func callData(ofRequestType requestType: ReqestType ,withInputModel inputDataModel: Encodable? = nil, atPath path:String, completionHandler: @escaping ResultData){
+    func callAPI(ofRequestType requestType: ReqestType ,withInputModel inputDataModel: Encodable? = nil, atPath path: ServerURLs, completionHandler: @escaping ResultData){
         do{
             var inputData: Data?
             //encode model to data if needed
@@ -38,20 +23,20 @@ extension WebServiceClient{
                 inputData = try inputModel.getData()
             }
             //call network API
-            NetworkUtility.shareInstance.callData(requestType: requestType, jsonInputData: inputData, subPath: path) { (result) in
+            NetworkUtility.shareInstance.callData(requestType: requestType, jsonInputData: inputData, subPath: path.rawValue) { (result) in
                 switch result{
                 case .success(let data):
                     //decode data to model
                     DataModel.getDataModel(fromData: data, completionHandler: { (result) in
                         completionHandler(result)
                     })
-                case .fail(let error):
-                    completionHandler(Result.fail(error))
+                case .failure(let error):
+                    completionHandler(Result.failure(error))
                 }
             }
         }
         catch {
-            completionHandler(Result.fail(SAError.init(error)))
+            completionHandler(Result.failure(error))
         }
     }
 }

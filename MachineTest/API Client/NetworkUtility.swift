@@ -9,22 +9,31 @@
 import Foundation
 import SystemConfiguration
 
-class NetworkUtility
-{
-    var BaseUrl:String = "http://54.213.242.191:8000/user/"
-    
-    typealias ResultData = (_ result: Result<Data, SAError>) -> ()
+enum ReqestType:String{
+    case post = "POST"
+    case get = "GET"
+}
+
+enum JsonError: String, Error {
+    case dataParsingFailed
+    case dataModelParsingFailed
+    case invalidResponse
+    case resultValidationFailed
+    case networkNotReachable
+    case invalidUrl
+    case jsonParsingFailed
+}
+
+class NetworkUtility {    
+    typealias ResultData = (_ result: Result<Data, Error>) -> ()
     static let shareInstance = NetworkUtility()
     private init(){}
-    
-    enum JSONError: String, Error{
-        case NoData = "No data"
-    }
+
     func callData(requestType: ReqestType ,jsonInputData: Data?, subPath:String, completion: @escaping ResultData){
         if isInternetAvailable() {
             let urlPath = BaseUrl + subPath
             guard let endpoint = NSURL(string: urlPath) else {
-                completion(Result.fail(SAError.init(WebServiceError.invalidUrl, code: 401, description: "Error in creating endpoint")))
+                completion(Result.failure(JsonError.invalidUrl))
                 return
             }
             var request = URLRequest(url:endpoint as URL)
@@ -36,16 +45,16 @@ class NetworkUtility
             URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
                 do{
                     guard let data = data else{
-                        throw JSONError.NoData
+                        throw JsonError.dataParsingFailed
                     }
                     completion(Result.success(data))
                 }
                 catch {
-                    completion(Result.fail(SAError.init(error)))
+                    completion(Result.failure(error))
                 }
                 }.resume()
         }else{
-            completion(Result.fail(SAError.init(WebServiceError.networkNotReachable, code: 400, description: "Please check your internet connection")))
+            completion(Result.failure(JsonError.networkNotReachable))
         }
     }
     private func isInternetAvailable() -> Bool{
