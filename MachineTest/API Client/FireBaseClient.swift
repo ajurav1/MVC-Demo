@@ -10,38 +10,24 @@ import Foundation
 import Firebase
 import FirebaseDatabase
 
-enum FirebaseObserveType:String{
+enum FirebaseObserveType: String{
     case once
     case realtime
 }
 
-class SetFireBaseClient{
-    typealias ErrorData = (_ error: SAError) -> ()
-    static func setData(withInputModel inputDataModel: Encodable, atChild path: String, completionHandler: @escaping ErrorData){
-        do{
-            let firebaseDataObject = try inputDataModel.getJsonObject()
-            Database.database().reference().child(path).setValue(firebaseDataObject, withCompletionBlock: { (error:Error?, ref:DatabaseReference) in
-                if let error = error {
-                    completionHandler(SAError.init(error))
-                }
-            })
-        }
-        catch {
-            completionHandler(SAError.init(error))
-        }
-    }
-    static func removeData(fromChild path: String, completionHandler: @escaping ErrorData){
-        Database.database().reference().child(path).removeValue { (error:Error?, ref:DatabaseReference) in
-            if let error = error {
-                completionHandler(SAError.init(error))
-            }
-        }
-    }
+// FireBase Protocol
+protocol FireBaseClient{
+    associatedtype DataModel: Decodable
+    typealias ErrorData = (_ error: Error) -> ()
+    typealias ResultData = (_ result: Result<DataModel, Error>) -> ()
+    
+    func getFirebaseData(for type:FirebaseObserveType, fromChild path: String, completionHandler: @escaping ResultData)
+    func setData(withInputModel inputDataModel: Encodable, atChild path: String, completionHandler: @escaping ErrorData)
+    func removeData(fromChild path: String, completionHandler: @escaping ErrorData)
 }
 
-class GetFireBaseClient<DataModel: Decodable> {
-    typealias ResultData = (_ result: Result<DataModel, SAError>) -> ()
-    static func getData(for type:FirebaseObserveType, fromChild path: String, completionHandler: @escaping ResultData){
+extension FireBaseClient{
+    func getFirebaseData(for type:FirebaseObserveType, fromChild path: String, completionHandler: @escaping ResultData){
         switch type {
         case .once:
             Database.database().reference().child(path).observeSingleEvent(of: DataEventType.value) { (snapshot) in
@@ -56,16 +42,35 @@ class GetFireBaseClient<DataModel: Decodable> {
                     completionHandler(result)
                 })
             }
-            
         }
     }
-    private static func parseSnapshot(_ snapshot: DataSnapshot, completionHandler: @escaping ResultData){
+    func setData(withInputModel inputDataModel: Encodable, atChild path: String, completionHandler: @escaping ErrorData){
+        do{
+            let firebaseDataObject = try inputDataModel.getJsonObject()
+            Database.database().reference().child(path).setValue(firebaseDataObject, withCompletionBlock: { (error:Error?, ref:DatabaseReference) in
+                if let error = error {
+                    completionHandler(error)
+                }
+            })
+        }
+        catch {
+            completionHandler(error)
+        }
+    }
+    func removeData(fromChild path: String, completionHandler: @escaping ErrorData){
+        Database.database().reference().child(path).removeValue { (error:Error?, ref:DatabaseReference) in
+            if let error = error {
+                completionHandler(error)
+            }
+        }
+    }
+    private func parseSnapshot(_ snapshot: DataSnapshot, completionHandler: @escaping ResultData){
         if snapshot.exists(){
             DataModel.getDataModel(fromJsonObject: snapshot.value ?? [:], completionHandler: { (result) in
                 completionHandler(result)
             })
             return
         }
-        completionHandler(Result.fail(SAError.init(WebServiceError.invalidResponse, code: 1001, description: "Data not exist.")))
+        completionHandler(Result.failure(JsonError.dataParsingFailed))
     }
 }

@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1038695C20B67A6500A83A74 /* WebServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038695B20B67A6500A83A74 /* WebServiceClient.swift */; };
+		1038695C20B67A6500A83A74 /* WebServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038695B20B67A6500A83A74 /* WebServiceProtocol.swift */; };
 		1038695E20B67BEB00A83A74 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038695D20B67BEB00A83A74 /* Constant.swift */; };
 		1038697920B6BC3C00A83A74 /* APIResponseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038697220B6BC3C00A83A74 /* APIResponseClient.swift */; };
 		1038697B20B6BC3C00A83A74 /* BusinessDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038697520B6BC3C00A83A74 /* BusinessDataModel.swift */; };
 		1038697C20B6BC3C00A83A74 /* ImageDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038697620B6BC3C00A83A74 /* ImageDataModel.swift */; };
 		1038697D20B6BC3C00A83A74 /* ItemDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038697720B6BC3C00A83A74 /* ItemDataModel.swift */; };
-		1038697E20B6BC3C00A83A74 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038697820B6BC3C00A83A74 /* Result.swift */; };
 		18AAC7A020A478A100F92EB4 /* ItemListView+collectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AAC79F20A478A000F92EB4 /* ItemListView+collectionView.swift */; };
 		24DA576E2090E59700D08D7C /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DA576D2090E59700D08D7C /* ItemCollectionViewCell.swift */; };
 		24DA57702090E81B00D08D7C /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24DA576F2090E81B00D08D7C /* HeaderCell.swift */; };
@@ -56,13 +55,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1038695B20B67A6500A83A74 /* WebServiceClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceClient.swift; sourceTree = "<group>"; };
+		1038695B20B67A6500A83A74 /* WebServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServiceProtocol.swift; sourceTree = "<group>"; };
 		1038695D20B67BEB00A83A74 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		1038697220B6BC3C00A83A74 /* APIResponseClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponseClient.swift; sourceTree = "<group>"; };
 		1038697520B6BC3C00A83A74 /* BusinessDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDataModel.swift; sourceTree = "<group>"; };
 		1038697620B6BC3C00A83A74 /* ImageDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDataModel.swift; sourceTree = "<group>"; };
 		1038697720B6BC3C00A83A74 /* ItemDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDataModel.swift; sourceTree = "<group>"; };
-		1038697820B6BC3C00A83A74 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		18AAC79F20A478A000F92EB4 /* ItemListView+collectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ItemListView+collectionView.swift"; sourceTree = "<group>"; };
 		24DA576D2090E59700D08D7C /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		24DA576F2090E81B00D08D7C /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
@@ -133,7 +131,6 @@
 		1038697120B6BC3C00A83A74 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1038697820B6BC3C00A83A74 /* Result.swift */,
 				1038697220B6BC3C00A83A74 /* APIResponseClient.swift */,
 				1038697420B6BC3C00A83A74 /* Data Model */,
 			);
@@ -261,7 +258,7 @@
 			children = (
 				98A242292090B516003EBA15 /* NetworkUtility.swift */,
 				B7ABCC5320C0089C00E22F9F /* CodableUtility.swift */,
-				1038695B20B67A6500A83A74 /* WebServiceClient.swift */,
+				1038695B20B67A6500A83A74 /* WebServiceProtocol.swift */,
 				B7ABCC5120BFCD6C00E22F9F /* FireBaseClient.swift */,
 			);
 			path = "API Client";
@@ -459,7 +456,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1038697E20B6BC3C00A83A74 /* Result.swift in Sources */,
 				24DA576E2090E59700D08D7C /* ItemCollectionViewCell.swift in Sources */,
 				B74D8FEF20C542480014FD5A /* VideoListViewController.swift in Sources */,
 				24DA57702090E81B00D08D7C /* HeaderCell.swift in Sources */,
@@ -467,7 +463,7 @@
 				98A2422C2090B7F6003EBA15 /* Utility.swift in Sources */,
 				1038697D20B6BC3C00A83A74 /* ItemDataModel.swift in Sources */,
 				24DA57722090ED3F00D08D7C /* FooterCell.swift in Sources */,
-				1038695C20B67A6500A83A74 /* WebServiceClient.swift in Sources */,
+				1038695C20B67A6500A83A74 /* WebServiceProtocol.swift in Sources */,
 				18AAC7A020A478A100F92EB4 /* ItemListView+collectionView.swift in Sources */,
 				1038697B20B6BC3C00A83A74 /* BusinessDataModel.swift in Sources */,
 				B7ABCC5420C0089C00E22F9F /* CodableUtility.swift in Sources */,

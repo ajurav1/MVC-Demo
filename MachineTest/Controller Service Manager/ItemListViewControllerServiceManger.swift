@@ -11,11 +11,13 @@ import Foundation
 protocol ItemListViewControllerServiceMangerDelegate : class{
     func itemListViewControllerServiceMangerDelegate(serviceManger: ItemListViewControllerServiceManger, didFetchingData data: [ItemDataModel]?)
 }
-class ItemListViewControllerServiceManger: NSObject{
+
+class ItemListViewControllerServiceManger: NSObject, FireBaseClient, WebServiceClient{
+    typealias DataModel = APIResponseClient<[ItemDataModel]>
     weak var delegate: ItemListViewControllerServiceMangerDelegate?
     
     func getItemListData(itemDataInput: ItemDataInput){
-        GetFireBaseClient<APIResponseClient<[ItemDataModel]>>.getData(for: .realtime, fromChild: "quickSearchCat") { (result) in
+        self.getFirebaseData(for: .realtime, fromChild: "quickSearchCat") { (result) in
             switch result{
             case .success(let apiResponse):
                 if apiResponse.validate(){
@@ -23,26 +25,26 @@ class ItemListViewControllerServiceManger: NSObject{
                 }else{
                     self.callWebAPI(itemDataInput)
                 }
-            case .fail(let error):
+            case .failure(let error):
                 AppHelper.showAlert(error)
                 self.callWebAPI(itemDataInput)
             }
         }
     }
     func deleteData(){
-        SetFireBaseClient.removeData(fromChild: "quickSearchCat") { (isError) in
+        self.removeData(fromChild: "quickSearchCat") { (isError) in
             AppHelper.showAlert(isError)
         }
     }
     
     fileprivate func setModelToFirebase(model: Encodable){
-        SetFireBaseClient.setData(withInputModel: model, atChild: "quickSearchCat") { (isError) in
+        self.setData(withInputModel: model, atChild: "quickSearchCat") { (isError) in
             AppHelper.showAlert(isError)
         }
     }
     
     fileprivate func callWebAPI(_ itemDataInput: ItemDataInput) {
-        WebServiceClient<APIResponseClient<[ItemDataModel]>>.callData(ofRequestType: ReqestType.post, withInputModel: itemDataInput, atPath: "quickSearchCat") { (result) in
+        self.callAPI(ofRequestType: .post, withInputModel: itemDataInput, atPath: .quickSearchCat) { (result) in
             switch result{
             case .success(let apiResponse):
                 if apiResponse.validate(){
@@ -50,7 +52,7 @@ class ItemListViewControllerServiceManger: NSObject{
                 }
                 self.setModelToFirebase(model: apiResponse)
                 
-            case .fail(let error):
+            case .failure(let error):
                 AppHelper.showAlert(error)
             }
         }

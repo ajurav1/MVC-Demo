@@ -17,12 +17,8 @@ class AppHelper{
             appDelegate.window!.rootViewController?.present(alert, animated: true, completion: nil)
         })
     }
-    static func showAlert(_ saError: SAError){
-        guard let description = saError.description else {
-            self.showAlert(title: "Error", subtitle: saError.error.localizedDescription)
-            return
-        }
-        self.showAlert(title: "Error", subtitle: description)
+    static func showAlert(_ error: Error){
+        self.showAlert(title: "Error", subtitle: error.localizedDescription)
     }
 }
 

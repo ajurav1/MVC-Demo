@@ -7,9 +7,17 @@
 //
 
 import Foundation
+
+let BaseUrl:String = "http://54.213.242.191:8000/user/"
+
 enum AppStoryboardType : String {
     case main = "Main"
     
+}
+
+enum ServerURLs: String{
+    case userPosts = "posts"
+    case quickSearchCat = "quickSearchCat"
 }
 
 
