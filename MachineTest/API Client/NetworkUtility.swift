@@ -29,14 +29,21 @@ class NetworkUtility {
     static let shareInstance = NetworkUtility()
     private init(){}
 
-    func callData(requestType: ReqestType ,jsonInputData: Data?, subPath:String, completion: @escaping ResultData){
+    func callData(requestType: ReqestType , jsonInputData: Data?, query: [String : String]?, subPath:String, completion: @escaping ResultData){
         if isInternetAvailable() {
             let urlPath = BaseUrl + subPath
-            guard let endpoint = NSURL(string: urlPath) else {
+            guard var urlComp = URLComponents(string: urlPath) else {
                 completion(Result.failure(JsonError.invalidUrl))
                 return
             }
-            var request = URLRequest(url:endpoint as URL)
+            if requestType == .get, let query = query{
+                urlComp.setQueryItems(with: query)
+            }
+            guard let url = urlComp.url else {
+                completion(Result.failure(JsonError.invalidUrl))
+                return
+            }
+            var request = URLRequest(url: url)
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpMethod = requestType.rawValue
             if requestType == .post , jsonInputData != nil{

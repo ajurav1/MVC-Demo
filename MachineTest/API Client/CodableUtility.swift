@@ -16,6 +16,10 @@ extension Encodable{
     func getJsonObject() throws -> Any{
         return try JSONSerialization.jsonObject(with: self.getData(), options: .allowFragments)
     }
+    
+    func getJsonObject() throws -> Any{
+        return try JSONSerialization.jsonObject(with: self.getData(), options: .allowFragments)
+    }
 }
 
 extension Decodable{
@@ -39,5 +43,10 @@ extension Decodable{
         } catch {
             completionHandler(Result.failure(error))
         }
+    }
+}
+extension URLComponents {
+    mutating func setQueryItems(with parameters: [String: String]) {
+        self.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
     }
 }

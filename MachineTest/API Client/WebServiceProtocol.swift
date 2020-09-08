@@ -18,12 +18,17 @@ extension WebServiceClient{
     func callAPI(ofRequestType requestType: ReqestType ,withInputModel inputDataModel: Encodable? = nil, atPath path: ServerURLs, completionHandler: @escaping ResultData){
         do{
             var inputData: Data?
+            var inputQuery:  [String : String]?
             //encode model to data if needed
             if let inputModel = inputDataModel{
-                inputData = try inputModel.getData()
+                if requestType == .get{
+                    inputQuery = try inputModel.getJsonObject() as! [String : String]
+                } else{
+                    inputData = try inputModel.getData()
+                }
             }
             //call network API
-            NetworkUtility.shareInstance.callData(requestType: requestType, jsonInputData: inputData, subPath: path.rawValue) { (result) in
+            NetworkUtility.shareInstance.callData(requestType: requestType, jsonInputData: inputData, query: <#[String : String]?#>, subPath: path.rawValue) { (result) in
                 switch result{
                 case .success(let data):
                     //decode data to model
